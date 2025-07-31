@@ -6,6 +6,15 @@ export const education = defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'picture',
+      title: 'Picture',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      description: 'Picture of the educational institution',
+    }),
+    defineField({
       name: 'institution',
       title: 'Institution Name',
       type: 'string',
