@@ -155,13 +155,6 @@ export const projects = defineType({
       description: 'Tags for filtering and categorization',
     }),
     defineField({
-      name: 'order',
-      title: 'Display Order',
-      type: 'number',
-      description: 'Order in which this project should appear (lower numbers appear first)',
-      validation: (rule) => rule.required().min(1),
-    }),
-    defineField({
       name: 'isFeatured',
       title: 'Featured Project',
       type: 'boolean',

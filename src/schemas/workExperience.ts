@@ -9,7 +9,7 @@ export const workExperience = defineType({
       name: 'picture',
       title: 'Company Logo or Picture',
       type: 'image',
-      options: { hotspot: true },
+      options: {hotspot: true},
       description: 'Logo or image representing the company',
     }),
     defineField({
@@ -57,57 +57,22 @@ export const workExperience = defineType({
       rows: 3,
     }),
     defineField({
-      name: 'responsibilities',
-      title: 'Key Responsibilities & Achievements',
+      name: 'technologies',
+      title: 'Technologies Used',
       type: 'array',
       of: [{type: 'string'}],
-      description: 'List your main responsibilities, tasks, or notable achievements',
+      options: {layout: 'tags'},
+      description: 'e.g. React, TypeScript, Go, PostgreSQL',
+      validation: (rule) => rule.unique().max(50),
     }),
     defineField({
-      name: 'order',
-      title: 'Display Order',
-      type: 'number',
-      description: 'Order in which this work experience should appear (lower numbers appear first)',
-      validation: (rule) => rule.required().min(1),
+      name: 'learnings',
+      title: 'Things I Learned / Experienced',
+      type: 'array',
+      of: [{type: 'string'}],
+      options: {layout: 'tags'},
+      description: 'e.g., Teamwork, Collaboration, Agile, Communication, Leadership',
+      validation: (rule) => rule.unique().max(50),
     }),
-    defineField({
-      name: 'isVisible',
-      title: 'Visible on Website',
-      type: 'boolean',
-      description: 'Whether this work experience should be displayed on your website',
-      initialValue: true,
-    }),
-  ],
-  preview: {
-    select: {
-      title: 'company',
-      subtitle: 'position',
-      media: 'picture',
-    },
-    prepare(selection) {
-      const {title, subtitle, media} = selection
-      return {
-        title: title || 'Untitled Company',
-        subtitle: subtitle || 'No position specified',
-        media: media,
-      }
-    },
-  },
-  orderings: [
-    {
-      title: 'Order (Lowest First)',
-      name: 'orderAsc',
-      by: [{field: 'order', direction: 'asc'}],
-    },
-    {
-      title: 'End Date (Most Recent)',
-      name: 'endDateDesc',
-      by: [{field: 'endDate', direction: 'desc'}],
-    },
-    {
-      title: 'Company Name',
-      name: 'companyAsc',
-      by: [{field: 'company', direction: 'asc'}],
-    },
   ],
 })
