@@ -39,7 +39,7 @@ export const education = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'g,',
+      name: 'endDate', // Fixed typo from 'g,' to 'endDate'
       title: 'End Date',
       type: 'date',
       description: 'Leave empty if currently studying',
